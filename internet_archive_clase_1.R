@@ -1,3 +1,4 @@
+# GESTION DE LA API DE INTERNET ARCHIVE
 # CARGAMOS LAS LIBRERIAS
 
 require(internetarchive)
@@ -28,7 +29,7 @@ ia_keyword_search(         # abrimos la función de busqueda por palabras clave 
     )                       # cerramos la función de busqueda por palabras clave del paquete internetarchive
   %>%                       # simbolo pipe (de la libraria magrittr) para anclar objetos (en este caso anclamos el objeto 'comunismo')
     tibble()                # función para tabular los datos obtenidos (darle formato tabla)
-)                           # cerramos la impresión en consola del objeto creado 
+)                           # cerramos la impresión en consola del objeto creado
 
 ##
 
@@ -57,7 +58,7 @@ ia_keyword_search(         # abrimos la función de busqueda por palabras clave 
     )                          # cerramos la función de busqueda por palabras clave del paquete internetarchive
   %>%                          # simbolo pipe (de la libraria magrittr) para anclar objetos (en este caso anclamos el objeto 'comunismo')
     tibble()                   # función para tabular los datos obtenidos (darle formato tabla)
-)                              # cerramos la impresión en consola del objeto creado 
+)                              # cerramos la impresión en consola del objeto creado
 
 ##
 
@@ -68,8 +69,8 @@ ia_keyword_search(         # abrimos la función de busqueda por palabras clave 
     rbind(                        # abrimos la función para unir las tablas (solo une tablas de identica estructura)
       comunismo,                  # tabla 1
       anarquismo                  # tabla 2
-    )                             # cerramos la función para unir las tablas 
-)                                 # cerramos la impresión en consola del objeto creado 
+    )                             # cerramos la función para unir las tablas
+)                                 # cerramos la impresión en consola del objeto creado
 
 ##
 
@@ -103,7 +104,7 @@ ia_keyword_search(                      # abrimos la función de busqueda por pa
     )                          # cerramos la función de busqueda por palabras clave del paquete internetarchive
   %>%                          # simbolo pipe (de la libraria magrittr) para anclar objetos (en este caso anclamos el objeto 'comunismo')
     tibble()                   # función para tabular los datos obtenidos (darle formato tabla)
-)                              # cerramos la impresión en consola del objeto creado 
+)                              # cerramos la impresión en consola del objeto creado
 
 ##
 
@@ -118,7 +119,7 @@ unique(                       # abrimos función de valoes unicos
 
 # A tibble: 5,015 x 1
 
-# efectivamente había valores duplicados, archivos que son devueltos cuando buscamos con  
+# efectivamente había valores duplicados, archivos que son devueltos cuando buscamos con
 # anarquismo y también son devueltos cuando buscamos con comunismo como palabras clave
 # podemos cambiar el operador logico de OR a & para ver cuales son esos archivos que contienen ambos términos
 
@@ -139,15 +140,15 @@ unique(                       # abrimos función de valoes unicos
     )                          # cerramos la función de busqueda por palabras clave del paquete internetarchive
   %>%                          # simbolo pipe (de la libraria magrittr) para anclar objetos (en este caso anclamos el objeto 'comunismo')
     tibble()                   # función para tabular los datos obtenidos (darle formato tabla)
-)                              # cerramos la impresión en consola del objeto creado 
+)                              # cerramos la impresión en consola del objeto creado
 
 ##
 
 # VER EL ARCHIVO EN EL NAVEGADOR
 
-# si en algún momento queremos ver algunos de los archivos identificados con el buscador 
+# si en algún momento queremos ver algunos de los archivos identificados con el buscador
 # solo tenemos que hace ruso de la funcion ai_browse()
-  
+
 ia_browse("doctrinassociale00vivi")
 
 # cuando abran el archivo en el navegador podrán bajar el archivo desde la propia pagina web
@@ -169,7 +170,7 @@ ia_browse("doctrinassociale00vivi")
     "languageSorter" = "Spanish",        # definimos el idioma
     date = "1800 TO 1990"                # definimos el período
     )                                    # cerramos el vector
-)                                        # cerramos la impresión en consola del objeto creado 
+)                                        # cerramos la impresión en consola del objeto creado
 
 ##
 
@@ -202,7 +203,7 @@ ia_browse("doctrinassociale00vivi")
       "mediatype" = "texts",                                 # definimos el tipo de objeto
       date = "1500 TO 2020"                                  # definimos el período
     )                                                        # cerramos el vector
-)                                                            # cerramos la impresión en consola del objeto creado 
+)                                                            # cerramos la impresión en consola del objeto creado
 
 ##
 
@@ -235,7 +236,7 @@ ia_browse("doctrinassociale00vivi")
       "mediatype" = "image",                                 # definimos el tipo de objeto
       date = "1900 TO 1950"                                  # definimos el período
     )                                                        # cerramos el vector
-)                                                            # cerramos la impresión en consola del objeto creado 
+)                                                            # cerramos la impresión en consola del objeto creado
 
 ##
 
@@ -291,10 +292,10 @@ saveRDS(                            # abrimos funcion de guardado
 biblio_sevilla_metadatos_tibble <- biblio_sevilla_metadatos %>% spread(field, value)
 
 # Mostramos la nueva tabla con las columnas acostadas
-tibble::glimpse(biblio_sevilla_metadatos_tibble) 
+tibble::glimpse(biblio_sevilla_metadatos_tibble)
 
-# Nos quedamos con 39 de las 117 variables existentes 
-biblio_sevilla_metadatos_tibble_select <- biblio_sevilla_metadatos_tibble %>% 
+# Nos quedamos con 39 de las 117 variables existentes
+biblio_sevilla_metadatos_tibble_select <- biblio_sevilla_metadatos_tibble %>%
   select(-`bookreader-defaults`, -color, -contibutor, -contribution, -contributolr,
          -contributor1, -contributor2, -contributor3, -contributor4, -contributor5,
          -contributoro, -contritubor, -cotributor, -coverage, -crator, -creato, -creatoar,
@@ -369,7 +370,7 @@ saveRDS(                            # abrimos funcion de guardado
       "/IWW"),           # indicamos cual es la carpeta para las descargas
     overwrite = FALSE    # establecemos que no sobrescriba archivos
               ) %>%      # pipe
-  glimpse()              # aplicamos función para mostrar las variables en sentido horizontal 
+  glimpse()              # aplicamos función para mostrar las variables en sentido horizontal
     )                    # cerramos la tabla
 )                        # cerramos la impresión en consola del objeto que vamos a crear
 
